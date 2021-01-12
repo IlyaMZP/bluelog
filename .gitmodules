@@ -1,0 +1,3 @@
+[submodule "bluelog/static/ckeditor"]
+	path = bluelog/static/ckeditor
+	url = https://github.com/ckeditor/ckeditor4
