@@ -4,7 +4,7 @@
 
 > Example application for *[Python Web Development with Flask](http://helloflask.com/en/book)* (《[Flask Web 开发实战](http://helloflask.com/book)》).
 
-Demo: http://bluelog.helloflask.com
+Demo: https://mzp.icu
 
 ![Screenshot](http://helloflask.com/screenshots/bluelog.png)
 
