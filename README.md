@@ -6,7 +6,7 @@
 
 Demo: https://mzp.icu
 
-![Screenshot](http://helloflask.com/screenshots/bluelog.png)
+![Screenshot](https://mzp.icu/files/bluelog.png)
 
 ## Installation
 
