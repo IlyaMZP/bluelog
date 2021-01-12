@@ -12,7 +12,7 @@ Demo: https://mzp.icu
 
 clone:
 ```
-$ git clone https://github.com/greyli/bluelog.git
+$ git clone --recurse-submodules -j8 https://github.com/IlyaMZP/bluelog.git
 $ cd bluelog
 ```
 create & activate virtual env then install dependency:
