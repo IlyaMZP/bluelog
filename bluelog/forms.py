@@ -52,7 +52,7 @@ class CategoryForm(FlaskForm):
 
 class CommentForm(FlaskForm):
     author = StringField('Name', validators=[DataRequired(), Length(1, 30)])
-    email = StringField('Email', validators=[DataRequired(), Email(), Length(1, 254)])
+    email = StringField('Email (Optional)', validators=[Optional(), Email(), Length(1, 254)])
     site = StringField('Site', validators=[Optional(), URL(), Length(0, 255)])
     body = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField()

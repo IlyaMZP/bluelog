@@ -265,3 +265,11 @@ def upload_image():
     f.save(os.path.join(current_app.config['BLUELOG_UPLOAD_PATH'], f.filename))
     url = url_for('.get_image', filename=f.filename)
     return upload_success(url, f.filename)
+
+
+@admin_bp.route('/unsubscribe/<string:email>')
+def email_unsubscribe(email):
+    comments = Comment.query.filter_by(email=email).update({"email": ""})
+    db.session.commit()
+    flash('Email unsubscribed.', 'success')
+    return redirect('/')

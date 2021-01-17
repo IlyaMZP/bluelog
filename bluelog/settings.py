@@ -34,9 +34,10 @@ class BaseConfig(object):
     MAIL_USE_SSL = True
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
-    MAIL_DEFAULT_SENDER = ('Bluelog Admin', MAIL_USERNAME)
+    MAIL_DEFAULT_SENDER = ('Bluelog Notification', MAIL_USERNAME)
 
-    BLUELOG_EMAIL = os.getenv('BLUELOG_EMAIL')
+    BLUELOG_EMAIL = os.getenv('BLUELOG_EMAIL')  # e.g. noreply@mzp.icu
+    BLUELOG_ADMIN_EMAIL = os.getenv('BLUELOG_ADMIN_EMAIL') # e.g. ilya@mzp.icu
     BLUELOG_POST_PER_PAGE = 10
     BLUELOG_MANAGE_POST_PER_PAGE = 15
     BLUELOG_COMMENT_PER_PAGE = 15
@@ -46,6 +47,7 @@ class BaseConfig(object):
 
     BLUELOG_UPLOAD_PATH = os.path.join(basedir, 'uploads')
     BLUELOG_ALLOWED_IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']
+    BLUELOG_DOMAIN_NAME = os.getenv('BLUELOG_DOMAIN_NAME', 'localhost:5000/')  # used in emails
 
 
 class DevelopmentConfig(BaseConfig):

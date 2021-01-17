@@ -27,18 +27,20 @@ def send_mail(subject, to, html):
 
 
 def send_new_comment_email(post):
-    post_url = url_for('blog.show_post', post_id=post.id, _external=True) + '#comments'
-    send_mail(subject='New comment', to=current_app.config['BLUELOG_EMAIL'],
+    post_url = current_app.config['BLUELOG_DOMAIN_NAME'] + url_for('blog.show_post', post_id=post.id) + '#comments'
+    send_mail(subject='New comment', to=current_app.config['BLUELOG_ADMIN_EMAIL'],
               html='<p>New comment in post <i>%s</i>, click the link below to check:</p>'
-                   '<p><a href="%s">%s</a></P>'
+                   '<p><a href="http://%s">%s</a></P>'
                    '<p><small style="color: #868e96">Do not reply this email.</small></p>'
                    % (post.title, post_url, post_url))
 
 
 def send_new_reply_email(comment):
-    post_url = url_for('blog.show_post', post_id=comment.post_id, _external=True) + '#comments'
-    send_mail(subject='New reply', to=comment.email,
-              html='<p>New reply for the comment you left in post <i>%s</i>, click the link below to check: </p>'
-                   '<p><a href="%s">%s</a></p>'
-                   '<p><small style="color: #868e96">Do not reply this email.</small></p>'
-                   % (comment.post.title, post_url, post_url))
+    if comment.email:
+        post_url = current_app.config['BLUELOG_DOMAIN_NAME'] + url_for('blog.show_post', post_id=comment.post_id) + '#comments'
+        send_mail(subject='New reply', to=comment.email,
+                  html='<p>New reply for the comment you left in post <i>%s</i>, click the link below to check: </p>'
+                       '<p><a href="http://%s">%s</a></p>'
+                       '<p><a href="http://%s/admin/unsubscribe/%s">Unsubscribe</a></p>'
+                       '<p><small style="color: #868e96">Do not reply this email.</small></p>'
+                       % (comment.post.title, post_url, post_url, current_app.config['BLUELOG_DOMAIN_NAME'], comment.email))
