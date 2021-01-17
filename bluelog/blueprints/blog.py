@@ -8,7 +8,7 @@
 from flask import render_template, flash, redirect, url_for, request, current_app, Blueprint, abort, make_response
 from flask_login import current_user
 
-from bluelog.emails import send_new_comment_email, send_new_reply_email
+from bluelog.emails import send_new_comment_email
 from bluelog.extensions import db
 from bluelog.forms import CommentForm, AdminCommentForm
 from bluelog.models import Post, Category, Comment
@@ -70,11 +70,6 @@ def show_post(post_id):
         comment = Comment(
             author=author, email=email, site=site, body=body,
             from_admin=from_admin, post=post, reviewed=reviewed)
-        replied_id = request.args.get('reply')
-        if replied_id:
-            replied_comment = Comment.query.get_or_404(replied_id)
-            comment.replied = replied_comment
-            send_new_reply_email(replied_comment)
         db.session.add(comment)
         db.session.commit()
         if current_user.is_authenticated:  # send message based on authentication status

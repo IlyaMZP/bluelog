@@ -15,6 +15,7 @@ from bluelog.extensions import db
 from bluelog.forms import SettingForm, PostForm, CategoryForm, LinkForm
 from bluelog.models import Post, Category, Comment, Link
 from bluelog.utils import redirect_back, allowed_file
+from bluelog.emails import send_new_reply_email
 
 admin_bp = Blueprint('admin', __name__)
 
@@ -136,6 +137,10 @@ def approve_comment(comment_id):
     comment = Comment.query.get_or_404(comment_id)
     comment.reviewed = True
     db.session.commit()
+    replied_id = comment.replied_id
+    if replied_id:
+        replied_comment = Comment.query.get_or_404(replied_id)
+        send_new_reply_email(replied_comment)
     flash('Comment published.', 'success')
     return redirect_back()
 
