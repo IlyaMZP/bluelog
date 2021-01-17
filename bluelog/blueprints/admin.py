@@ -269,7 +269,7 @@ def upload_image():
 
 @admin_bp.route('/unsubscribe/<string:email>')
 def email_unsubscribe(email):
-    comments = Comment.query.filter_by(email=email).update({"email": ""})
+    Comment.query.filter_by(email=email).update({"email": ""})
     db.session.commit()
     flash('Email unsubscribed.', 'success')
     return redirect('/')
