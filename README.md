@@ -28,7 +28,7 @@ or with Pipenv:
 $ pipenv install --dev
 $ pipenv shell
 ```
-generate fake data then run:
+To generate fake data and run:
 ```
 $ flask forge
 $ flask run
