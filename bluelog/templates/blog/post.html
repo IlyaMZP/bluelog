@@ -44,7 +44,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="text" class="form-control"
-                                       value="{{ url_for('.show_post', post_id=post.id, _external=True) }}" readonly>
+                                       value="https://{{ config['BLUELOG_DOMAIN_NAME'] }}{{ url_for('.show_post', post_id=post.id) }}" readonly>
                             </div>
                         </div>
                     </div>
