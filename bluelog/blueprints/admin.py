@@ -47,7 +47,7 @@ def manage_post():
     if page > pages:
       return redirect(url_for('.manage_post', page=pages))
     pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, per_page=current_app.config['BLUELOG_MANAGE_POST_PER_PAGE'])
+        page=page, per_page=current_app.config['BLUELOG_MANAGE_POST_PER_PAGE'])
     posts = pagination.items
     return render_template('admin/manage_post.html', page=page, pagination=pagination, posts=posts)
 
@@ -126,7 +126,7 @@ def manage_comment():
     else:
         filtered_comments = Comment.query
 
-    pagination = filtered_comments.order_by(Comment.timestamp.desc()).paginate(page, per_page=per_page)
+    pagination = filtered_comments.order_by(Comment.timestamp.desc()).paginate(page=page, per_page=per_page)
     comments = pagination.items
     return render_template('admin/manage_comment.html', comments=comments, pagination=pagination)
 
