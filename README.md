@@ -4,7 +4,7 @@
 
 > Example application for *[Python Web Development with Flask](http://helloflask.com/en/book)* (《[Flask Web 开发实战](http://helloflask.com/book)》).
 
-Demo: https://mzp.icu
+Demo: https://mango.vg
 
 ![Screenshot](https://mzp.icu/files/bluelog.png)
 
@@ -30,15 +30,11 @@ $ pipenv shell
 ```
 To generate fake data and run:
 ```
+$ flask init
 $ flask forge
 $ flask run
 * Running on http://127.0.0.1:5000/
 ```
-
-Test account:
-
-* username: `admin`
-* password: `helloflask`
 
 ## License
 
