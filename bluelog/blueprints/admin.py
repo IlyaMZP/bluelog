@@ -45,7 +45,7 @@ def manage_post():
     page = request.args.get('page', 1, type=int)
     pages = Post.query.paginate(page=1, per_page=current_app.config['BLUELOG_MANAGE_POST_PER_PAGE']).pages
     if page > pages:
-      return redirect(url_for('.manage_post', page=pages))
+      return redirect(url_for('.manage_post') + "?page=" + str(pages))
     pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
         page=page, per_page=current_app.config['BLUELOG_MANAGE_POST_PER_PAGE'])
     posts = pagination.items
