@@ -24,8 +24,10 @@ img {
     margin-top: 10px;
 }
 
-.sidebar {
+@media (min-width: 576px) {
+  .sidebar {
     padding-left: 30px;
+  }
 }
 
 footer {
